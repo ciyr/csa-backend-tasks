@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<h1>Delete Todo : "{{ todo }}"?</h1>
+<br>
+<form method="post">
+    {% csrf_token %}
+<button type="submit">Yes</button>
+</form>
+    <a href="{% url 'todo:home_user' %}"><button>No</button></a>
+</body>
+</html>

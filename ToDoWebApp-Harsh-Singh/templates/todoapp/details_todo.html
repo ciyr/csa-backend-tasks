@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ todo.title }}</title>
+</head>
+<body>
+<a href="{% url 'todo:home_user' %}"><button>Back to home</button></a>
+<br>
+<h1>Title : {{ todo.title }}</h1>
+<p><b>Content : </b> {{ todo.content }}</p>
+<div><b>Created on : </b>{{ todo.created }}</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+</head>
+<body>
+<h1>{{ user }}'s TODO list</h1>
+<br>
+<a href="{% url 'todo:logout' %}">
+    <button>Logout</button>
+</a>
+<br><br>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Created</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for todo in todo_list %}
+        <tr>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.content }}</td>
+            <td>{{ todo.created }}</td>
+            <td><a href="{% url 'todo:view' todo.id %}">
+                <button>View</button>
+            </a></td>
+            <td><a href="{% url 'todo:edit' todo.id %}">
+                <button>Edit</button>
+            </a></td>
+            <td><a href="{% url 'todo:delete' todo.id %}">
+                <button>Delete</button>
+            </a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+<a href="{% url 'todo:create' %}">
+    <button>Create a new TODO</button>
+</a>
+</body>
+</html>
