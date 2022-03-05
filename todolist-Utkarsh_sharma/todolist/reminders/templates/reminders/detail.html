@@ -1,0 +1,24 @@
+{% extends "reminders/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <small class="text-muted">{{ reminder.date_posted|date:"F d, Y" }}</small>
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit_reminder' reminder.id %}">Edit</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete_reminder' reminder.id %}">Delete</a>
+      </div>
+    </div>
+    <h2 class="article-title">{{ reminder.title }}</h2>
+    <p class="article-content">{{ reminder.body }}</p>
+    <a class="btn btn-primary" href="{% url 'completed' reminder.id %}" role="button">
+    {% if reminder.completed == False %}
+        Mark as Completed
+    {% else %}
+        Mark as Incomplete
+    {% endif %}
+    </a> 
+  </div>
+</article>
+{% endblock content %}

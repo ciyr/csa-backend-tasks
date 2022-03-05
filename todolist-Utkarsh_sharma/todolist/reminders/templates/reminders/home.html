@@ -1,0 +1,22 @@
+{% extends "reminders/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+  {% for reminder in reminders %}
+  {% if reminder.creator == user %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <small class="text-muted">{{ reminder.date_posted|date:"F d, Y" }}</small>
+      </div>
+      <h2><a class="article-title" href="{% url 'reminder' reminder.id %}">{{ reminder.title }}</a></h2>
+      {% if reminder.completed == True %}
+      <i class="fa-solid fa-circle-check fa-2x"></i>
+      {% endif %}
+    </div>
+  </article>
+  {% endif %}
+  {% endfor %}
+{% else %}
+  Please Log In or Sign Up to view your To-Do List!
+{% endif %}
+{% endblock content %}
