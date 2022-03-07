@@ -1,0 +1,22 @@
+{
+  "name": "csa_backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  },
+  "description": ""
+}
