@@ -1,0 +1,30 @@
+{% extends 'spotify/base.html' %}
+{% load socialaccount %}
+{% block content %}
+
+
+
+
+     {% for song in songs %}
+
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+
+                    <a class="mr-2" href="{% url 'song-detail' song.id %}">Play Song</a>
+
+
+                    <h2>{{ song.name }}</h2>
+                </div>
+                <h6>{{ song.times_played }} times played</h6>
+                <p class="article-content">
+                    {% for singer in song.singers.all %}
+                        {{ singer.name }}
+                        <br>
+                    {% endfor %}
+                </p>
+            </div>
+        </article>
+
+    {% endfor %}
+{% endblock%}

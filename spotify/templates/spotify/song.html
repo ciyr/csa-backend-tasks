@@ -1,0 +1,48 @@
+{% extends 'spotify/base.html' %}
+{% load socialaccount %}
+{% block content %}
+
+
+
+        <div class="test">
+
+  <div>
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2>{{ song.name }}</h2>
+                </div>
+                <h6>{{ song.times_played }} times played</h6>
+                <p class="article-content">
+                    {% for singer in song.singers.all %}
+                        {{ singer.name }}
+                        <br>
+                    {% endfor %}
+                </p>
+            </div>
+        </article>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        {% if not liked %}
+                            <button class="btn btn-outline-info" type="submit" value="like" name = "like" >Like</button>
+                        {% else%}
+                            <button class="btn btn-outline-info" type="submit" value="dislike" name = "dislike" >Disike</button>
+                        {% endif %}
+                    </div>
+                </form>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit" value="play" name = "play" >Play Song</button>
+                    </div>
+                </form>
+            </div>
+    <div class="col-md-6 ">
+
+    </div>
+        </div>
+
+{#    {% endfor %}#}
+{% endblock%}

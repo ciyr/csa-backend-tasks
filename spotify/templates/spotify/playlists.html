@@ -1,0 +1,17 @@
+{% extends 'spotify/base.html' %}
+{% load socialaccount %}
+{% block content %}
+    <h3><a href="{% url 'playlist-create' %}">CREATE PLAYLIST</a></h3>
+     {% for playlist in playlists %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2></h2>
+                    <a href="{% url 'playlist-detail' playlist.id %}">{{ playlist.name }}</a>
+                </div>
+                <h6>{{ playlist.songs.all.count }} songs</h6>
+                <a class="btn btn-danger" href="{% url 'playlist-delete' playlist.id %}">Delete</a>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock%}
