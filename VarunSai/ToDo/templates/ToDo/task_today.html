@@ -1,0 +1,27 @@
+{% extends "ToDo/base.html" %}
+{% block content %}
+  <div style="display: grid; grid-template-columns: 3fr 1fr;">
+    <h2>Due Today</h2>
+    <h5 style="text-align: right; vertical-align: center; padding-top: 10px; margin-right: 5px">{% now "F d, Y" %}</h5>
+  </div>
+  <hr>
+  {% for task in tasks %}
+    {% if task.author == user %}
+        {% now "F d, Y" as todays_date %}
+        {%if task.due_date|date:"F d, Y" == todays_date %}  
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                <small class="text-muted">{{ task.date_posted|date:"F d, Y" }}</small>
+              </div>
+              {% if task.is_done %}
+              <h2><a class="article-title task-done" href="{% url 'task-detail' task.id %}">{{ task.title }}</a></h2>
+              {% else %}
+              <h2><a class="article-title task-notdone" href="{% url 'task-detail' task.id %}">{{ task.title }}</a></h2>
+              {% endif %}
+            </div>
+        </article>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
