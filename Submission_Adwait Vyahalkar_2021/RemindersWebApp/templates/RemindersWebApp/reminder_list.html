@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reminder</title>
+</head>
+
+<body bgcolor="yellow">
+    <header>
+        <h1><a href="/">Reminders</a></h1>
+    </header>
+
+    {% for reminders in reminder %}
+    <article>
+        <h2><a href="">{{ reminders.reminder_name }}</a></h2>
+        <time>Time: {{reminders.reminder_time}}</time>
+        {% if reminders.reminder_Completed %}
+        <p>Completed</p>
+        {% else %}
+        <p>Not Completed Yet</p>
+        {%endif%}
+    </article>
+    {% endfor %}
+</body>
+
+</html>
